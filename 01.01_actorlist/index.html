@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" />
+    <title>Actors</title>
+
+</head>
+
+<body>
+    </header>
+    <nav id="nav">
+        <button data-kategori="alle" class="valgt">Alle</button>
+        <button data-kategori="Fight Club" >fight club</button>
+        <button data-kategori="Pulp Fiction">Pulp Fiction</button>
+        <button data-kategori="Goodfellas">Goodfellas</button>
+        <button data-kategori="Inception">Inception</button>
+    </nav>
+
+    <main id="holder"></main>
+
+    <template>
+        <article>
+            <h2></h2>
+        </article>
+    </template>
+
+    <div id="pop_up">
+        <article>
+            <div id="luk">Tilbage</div>
+            <h2></h2>
+            <p class="movie"></p>
+        </article>
+    </div>    
+
+</body>
+</html>
+
+<script>
+    const element = document.getElementById("nav");
+    document.addEventListener("DOMContentLoaded",start)
+    let kategori;
+    let filter = "alle";
+         
+    function start(){
+        const filterknapper=document.querySelectorAll("nav button");
+        filterknapper.forEach(knap=> knap.addEventListener("click", filtrerActors));
+        loadJSON();
+    }
+
+    function filtrerActors(){
+        filter = this.dataset.kategori;
+        document.querySelector(".valgt").classList.remove("valgt");
+        this.classList.add("valgt")
+        visActors();
+    }
+
+    async function loadJSON(){
+        const JSONdata =await fetch("actors.json");
+        kategori =await JSONdata.json();
+        console.log("kategori",kategori);
+        visActors();
+    }
+
+    function visActors(){
+        const dest=document.querySelector("#holder");
+        const skabelon = document.querySelector("template").content;
+        dest.textContent="";
+
+        kategori.forEach(actor => {
+            console.log(actor.movie);
+            if(filter == actor.movie|| filter=="alle"){
+                const klon =skabelon.cloneNode(true);
+                klon.querySelector("h2").textContent=actor.fullname;
+                klon.querySelector("article").addEventListener("click",()=>visDetaljer(actor));
+                holder.appendChild(klon);
+            }
+        })
+    }
+
+    pop_up.addEventListener("click",()=>pop_up.style.display="none");
+
+
+    function visDetaljer(actor){
+         console.log(actor);
+
+         const pop_up=document.querySelector("#pop_up");
+         pop_up.style.display = "flex";    
+         pop_up.querySelector("h2").textContent=actor.fullname;
+         pop_up.querySelector(".movie").textContent = `movie: ${actor.movie}`;
+         document.querySelector("#luk").addEventListener("click",()=>pop_up.style.display="none");
+    }
+ </script>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>string test</title>
+  </head>
+  <body>
+    <h1>the string ex</h1>
+
+    <div id="interface">
+
+      <input type="text" name="input" id="input" />
+
+      <div id="rounding">
+        <select id="choices">
+          <option value="0">If input is a full name: Find the first name</option></option>
+          <option value="1">If input is a full name: Find the length of the first name</option>
+          <option value="2">If input is a full name: Find the middle name start and end position, and the middle name itself in a full name string</option>
+          <option value="3">If input is a filename: Check if a filename is .png or .jpg</option>
+          <option value="4">If input is a password: Hide a password with the correct number of *s</option>
+          
+      </div>
+
+
+      <input type="text" name="output" id="output" />
+      <button id="find_output">generate output</button>
+    </div>
+
+  </body>
+</html>
+
+
+<script>
+document.querySelector("#find_output").addEventListener("click", get_output);
+
+
+function get_output(){
+  const input= document.getElementById("input").innerHTML;
+  
+
+  if(value ==="0")
+{
+document.getElementById("results").innerHTML = +value1 + +value2;
+}
+if(value ==="1")
+{
+  const input= document.getElementById("results").innerHTML = +value1 - +value2;
+}
+if(value ==="2")
+{
+  document.getElementById("results").innerHTML = +value1 * +value2;
+}
+if(value ==="3")
+{
+  document.getElementById("results").innerHTML = +value1 / +value2;
+}
+if(value ==="4")
+{
+  document.getElementById("results").innerHTML = +value1 / +value2;
+}
+
+result.push(input.innerHTML);
+input.innerHTML="";
+calculatePlus();
+ 
+}
+
+
+function clear(){
+      const getValue= document.getElementById("firstnumber");
+      const getValue2= document.getElementById("secondnumber");
+
+        if (getValue.value !="" || getValue2.value !="" ) {
+            getValue.value = "";
+            getValue2.value = "";
+        }
+ }
+
+</script>

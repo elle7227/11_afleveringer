@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=z, initial-scale=1.0">
+    <title>test</title>
+    <style>
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+#queue {
+  height: 150px;
+  width: 400px;
+  background-color: #ddd;
+  display: flex;
+  align-items: flex-start;
+  overflow: hidden;
+}
+
+#queue-history {
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+
+.queue-bar {
+  height: 0%;
+  width: 2.5%;
+  background-color: #333;
+  margin-right: 0.5%;
+  transition: height 1s;
+}
+
+#current-count {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #333;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="queue">
+          <div id="queue-history">
+          </div>
+        </div>
+        <p id="current-count">Current count: <span id="count">0</span></p>
+      </div> 
+</body>
+</html>
+
+<script>
+
+    // Get the current count element
+const count = document.getElementById("count");
+
+// Get the queue history element
+const queueHistory = document.getElementById("queue-history");
+
+// Array to store the past 40 values
+let history = [];
+
+// Function to update the current count and the queue history
+const updateQueue = () => {
+  // Get a random number between 0 and 50
+  const currentCount = Math.floor(Math.random() * 50);
+  
+  // Update the current count
+  count.textContent = currentCount;
+
+  // Add the current count to the history array
+  history.push(currentCount);
+
+  // Keep only the past 40 values
+  if (history.length > 40) {
+    history.shift();
+  }
+
+  // Update the queue history
+  queueHistory.innerHTML = "";
+  for (let i = 0; i < history.length; i++) {
+    const bar = document.createElement("div");
+    bar.classList.add("queue-bar");
+    bar.style.height = `${history[i]}%`;
+    queueHistory.appendChild(bar);
+  }
+};
+
+// Call the updateQueue function every second
+setInterval(updateQueue, 600);
+</script>

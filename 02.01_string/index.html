@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>string</title>
+  </head>
+  <body>
+    <h1>the string ex</h1>
+
+    <div id="interface">
+
+      <input type="text" name="input" id="input" />
+
+      <div id="rounding">
+        <label><input type="checkbox" id="dropdown" />if...</label>
+
+        <select id="choices">
+          <option value="0">If input is </option>
+          <option value="1">If input is a full name: Find the first name</option>
+          <option value="2">If input is a full name: Find the length of the first name</option>
+          <option value="3">If input is a full name: Find the middle name start and end position, and the middle name itself in a full name string</option>
+          <option value="4">If input is a filename: Check if a filename is .png or .jpg</option>
+          <option value="5">If input is a password: Hide a password with the correct number of *s</option>
+          <option value="6">With any input: Make the third character uppercase</option>
+          <option value="7">With any input: Make a character uppercase, if it follows a space or a hyphen</option>
+        </select>
+      </div>
+
+      <p id="clear">clear results</p>
+
+
+      <input type="text" name="output" id="output" />
+      <button id="find_output">generate output</button>
+    </div>
+
+  </body>
+</html>
+
+
+<script>
+document.querySelector("#clear").addEventListener("click", clear);
+document.querySelector("#calculate").addEventListener("click", calculatePlus);
+
+
+function calculatePlus(){
+  const operater= document.getElementById("operater");
+  const value1= document.getElementById("firstnumber").value;
+  const value2= document.getElementById("secondnumber").value;
+  const oper = document.getElementById("operator").value;
+  Number.parseInt(value1, 10);
+  Number.parseInt(value2, 10);
+
+  if(oper ==="add")
+{
+document.getElementById("results").innerHTML = +value1 + +value2;
+}
+if(oper ==="sub")
+{
+  const input= document.getElementById("results").innerHTML = +value1 - +value2;
+}
+if(oper ==="mul")
+{
+  document.getElementById("results").innerHTML = +value1 * +value2;
+}
+if(oper ==="div")
+{
+  document.getElementById("results").innerHTML = +value1 / +value2;
+}
+
+result.push(input.innerHTML);
+input.innerHTML="";
+calculatePlus();
+ 
+}
+
+
+function clear(){
+      const getValue= document.getElementById("firstnumber");
+      const getValue2= document.getElementById("secondnumber");
+
+        if (getValue.value !="" || getValue2.value !="" ) {
+            getValue.value = "";
+            getValue2.value = "";
+        }
+ }
+
+</script>
